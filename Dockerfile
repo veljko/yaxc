@@ -27,3 +27,5 @@ COPY --from=builder /usr/src/app/assets/ /assets
 RUN ls -larth /assets
 
 ENTRYPOINT ["/yaxc"]
+
+CMD ["serve", "--enable-encryption", "-x 86400", "-l 5s", "-s 1h", "-r redis:6379", "--proxy-header X-Forwarded-For"]
